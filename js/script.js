@@ -1,3 +1,21 @@
+const menuIcon = document.getElementById("menu-toggle");
+const navLinks = document.getElementById("nav-links");
+
+menuIcon.addEventListener("click", () => {
+  navLinks.classList.toggle("show");
+});
+document.querySelectorAll("#nav-links a").forEach(link => {
+  link.addEventListener("click", () => {
+    navLinks.classList.remove("show");
+  });
+});
+
+
+window.addEventListener("click", (e) => {
+  if (!menuIcon.contains(e.target) && !navLinks.contains(e.target)) {
+    navLinks.classList.remove("show");
+  }
+});
 const apiUrl = "https://newsapi.org/v2/top-headlines?q=cricket&apiKey=23bb16fd2b78440bb6927fdf8a595274";
 
 const container = document.getElementById("news-container");
@@ -5,7 +23,7 @@ const container = document.getElementById("news-container");
 fetch("https://newsapi.org/v2/top-headlines?q=cricket&apiKey=23bb16fd2b78440bb6927fdf8a595274")
   .then(response => response.json())
   .then(data => {
-    const articles = data.articles.slice(0, 12); // limit to 8 news
+    const articles = data.articles.slice(0, 8);
 
     articles.forEach(article => {
       const card = document.createElement("div");
@@ -25,10 +43,4 @@ fetch("https://newsapi.org/v2/top-headlines?q=cricket&apiKey=23bb16fd2b78440bb69
     console.error("Error loading news:", error);
     container.innerHTML = `<p style="color:red;">Failed to load cricket news.</p>`;
   });
-
-// 23bb16fd2b78440bb6927fdf8a595274
-
-// https://newsapi.org/v2/everything?q=keyword&apiKey=23bb16fd2b78440bb6927fdf8a595274
-
-// https://newsapi.org/v2/top-headlines?q=cricket&apiKey=23bb16fd2b78440bb6927fdf8a595274
 

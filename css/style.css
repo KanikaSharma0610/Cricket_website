@@ -8,27 +8,8 @@ body {
   background-color: white;
   height: 100vh;
   width: auto;
-  font-family: Arial, Helvetica, sans-serif;
+  
 }
-
-
-nav,
-footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 70px;
-  position: fixed;
-  background: linear-gradient(270deg, #1a002b, #32004d, #000000, #1a002b);
-  background-size: 600% 600%;
-  animation: gradientBG 5s ease infinite;
-  box-shadow: 0 2px 10px #32004d;
-  padding: 15px 0;
-  position: sticky;
-  top: 0;
-  z-index: 999;
-}
-
 
 @keyframes gradientBG {
   0% {
@@ -44,40 +25,103 @@ footer {
   }
 }
 
-#logo img {
-  position: relative;
-  height: 100px;
-  width: 100px;
-  right: 629px;
-  
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 30px;
+  background: linear-gradient(270deg, #1a002b, #32004d, #000000, #1a002b);
+  background-size: 600% 600%;
+  background-position: 0% 50%;  
+  animation: gradientBG 5s ease infinite;
+  box-shadow: 0 2px 10px #32004d;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-nav ul {
+footer {
+  background: linear-gradient(270deg, #1a002b, #32004d, #000000, #1a002b);
+  background-size: 600% 600%;
+  background-position: 0% 50%;  
+  animation: gradientBG 5s ease infinite;
+  box-shadow: 0 2px 10px #32004d;
+  height: 80px;
+  padding: 15px 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
-  gap: 100%;
-  padding: 0;
-  list-style: none;
+  position: relative;
+  bottom: 0;
+  z-index: 999;
 }
 
 
-nav ul li a {
-  text-decoration: none;
+#logo img {
+  height:80px;
+  animation:spin 2s  infinite ;
+}
+
+@keyframes spin {
+  0%{
+    transform: rotate(0deg) scale(1.1);
+    
+  }
+   100%{
+    transform:  rotate(360deg) scale(1.3);
+    
+  }
+   
+  
+}
+#midlogo img {
+  height:80px;
+  animation: big 1s infinite;
+}
+@keyframes big {
+  0%{
+    transform: scale(1.5);
+  }
+ 100%{
+    transform: scale(2.5);
+  }
+}
+
+.menu-icon {
   font-size: 30px;
-  color: azure;
-  transition: all 5s;
+  color: white;
+  cursor: pointer;
+  z-index: 2;
+}
+.menu-icon:hover{
+  transform: scale(1.5);
 }
 
-
-nav ul li a:hover {
-  color: rgb(246, 240, 70);
-  border-top: 3px solid rgb(17, 16, 16);
-  border-bottom: 3px solid rgb(17, 16, 16);
-  transform: scale(1.2);
+#nav-links {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 70px;
+  right: 30px;
+  background-color:#32004d;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  list-style: none;
+  z-index: 1;
 }
 
+#nav-links.show {
+  display: flex;
+}
+
+#nav-links li a {
+  text-decoration: none;
+  color: white;
+  font-size: 30px;
+  font-family: 'Edu NSW ACT Cursive', cursive;
+  padding: 5px 0;
+}
 
 .hero {
   margin-top: 30px;
@@ -91,24 +135,8 @@ header h1 {
   align-items: center;
   font-size: 43px;
   font-weight: bolder;
+  font-family:'Edu NSW ACT Cursive', Helvetica, sans-serif;
 }
-
-
-.hover {
-  display: inline-block;
-  text-decoration: none;
-  transition: all 0.15s ease-in;
-  color: black;
-}
-
-
-.hover:hover {
-  color: rgb(41, 10, 237);
-  border-top: 3px solid rgb(17, 16, 16);
-  border-bottom: 3px solid rgb(17, 16, 16);
-  transform: scale(1.1);
-}
-
 
 .scrollBox {
   width: 600px;
@@ -121,11 +149,14 @@ header h1 {
 
 .scrollText {
   display: inline-block;
+  font-family:'Edu NSW ACT Cursive', Helvetica, sans-serif;
   font-size: 22px;
   font-weight: bold;
   color: #1a002b;
   animation: scrollRight 8s linear infinite
+  
 }
+
 
 
 @keyframes scrollRight {
@@ -207,4 +238,113 @@ footer p {
   align-items: center;
   font-weight: bold;
   font-size: 18px;
+  font-family:'Edu NSW ACT Cursive', Helvetica, sans-serif;
+}
+
+@media screen and (max-width: 1024px) {
+  .scrollBox {
+    width: 80%;
+  }
+
+  header h1 {
+    font-size: 36px;
+  }
+
+  .scrollText {
+    font-size: 20px;
+  }
+
+  #nav-links li a {
+    font-size: 26px;
+  }
+
+  .blog-card h3 {
+    font-size: 20px;
+  }
+
+  .blog-card p {
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  nav {
+    padding: 0px 20px;
+  }
+
+  #logo img,
+  #midlogo img {
+    height: 60px;
+  }
+
+  .menu-icon {
+    font-size: 26px;
+  }
+
+  .scrollBox {
+    width: 90%;
+  }
+
+  header h1 {
+    font-size: 30px;
+    text-align: center;
+  }
+
+  .scrollText {
+    font-size: 18px;
+  }
+
+  .blog-container {
+    grid-template-columns: 1fr; 
+    padding: 20px;
+  }
+
+  .blog-card {
+    padding: 15px;
+  }
+
+  footer p {
+    font-size: 16px;
+  }
+
+  #nav-links {
+    top: 60px;
+    right: 20px;
+    padding: 8px;
+  }
+
+  #nav-links li a {
+    font-size: 24px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  header h1 {
+    font-size: 26px;
+  }
+
+  .scrollText {
+    font-size: 16px;
+  }
+
+  .blog-card img {
+    height: 150px;
+  }
+
+  .read-more {
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+
+  footer {
+    padding: 10px 0;
+  }
+
+  footer p {
+    font-size: 14px;
+  }
+
+  #nav-links li a {
+    font-size: 20px;
+  }
 }

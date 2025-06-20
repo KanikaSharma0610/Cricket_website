@@ -156,6 +156,13 @@ function spin() {
        <span style="font-size:22px;"> Role: ${p.role}</span><br>
        <span style="font-size:22px;">Info: ${p.info}</span>
     `;
+    for(let i =0;i<10;i++){
+    confetti({
+    particleCount: 120,
+    spread: 70,
+    origin: { y: 0.6 }
+  });
+}
   }, 5200);
 }
 
